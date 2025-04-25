@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Perfil de Twitter</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.5/dist/css/splide.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css">
+  <style>
+    .section { display: none; }
+    .section.active { display: block; }
+  </style>
+</head>
+<body >
+
+    <div class="profile-container">
+        <!-- Carrusel de la foto de portada -->
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <!-- Primera imagen (activa por defecto) -->
+            <div class="carousel-item active" data-bs-interval="10000">
+              <img src="img/servicio.jpg" class="d-block w-100" alt="Cover photo 1">
+            </div>
+            <!-- Segunda imagen -->
+            <div class="carousel-item" data-bs-interval="2000">
+              <img src="img/pagina.jpg" class="d-block w-100" alt="Cover photo 2">
+            </div>
+            <!-- Tercera imagen -->
+            <div class="carousel-item">
+              <img src="img/colombia.jpg" class="d-block w-100" alt="Cover photo 3">
+            </div>
+              <!-- Tercera imagen -->
+              <div class="carousel-item">
+                <img src="img/web.jpg" class="d-block w-100" alt="Cover photo 3">
+              </div>
+           
+          </div>
+          
+          <!-- Controles del carrusel (botones de "anterior" y "siguiente") -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        
+     
+        
+
+        <!-- Información del perfil -->
+        <div class="profile-info">
+            <div class="avatar">
+                <img src="img/avatar.jpg" alt="Avatar" class="avatar-img">
+            </div>
+            <div class="Verificado">
+              <h2 class="flex items-center space-x-2 text-lg font-semibold">
+                <span>Olmer Ruiz</span>
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg"
+                  alt="Verificado"
+                  class="verificado-icon w-5 h-5"
+                >
+              </h2>
+            </div>
+            <div class="user-details">
+                <p>¡Da vida a las ideas <span class="typings"></span></p>
+                <p class="user-bio">Desarrollador creativo con ideas que no se detienen. Especialista en probar, romper y volver a construir. Siempre aprendiendo, siempre creando.</p>
+              </div>
+              
+              <div class="flex items-center space-x-4 text-gray-600 mt-2">
+                <p class="flex items-center text-sm">
+                  <i data-lucide="circle-dot" class="mr-2 text-gray-500"></i> Disponible
+                </p>
+                <p class="flex items-center text-sm">
+                  <i data-lucide="calendar-days" class="mr-2 text-gray-500"></i> 11/07/2003
+                </p>
+                <p class="flex items-center text-sm">
+                  <i data-lucide="calendar-check-2" class="mr-2 text-gray-500"></i> Se unió 2025
+                </p>
+              </div>
+              
+              
+              
+         
+              
+        </div>
+      
+        
+       
+        <!-- Navegación -->
+        <div class="nav-container">
+          <ul class="nav-scrollable flex justify-center space-x-4 overflow-x-auto md:overflow-x-visible md:space-x-8 md:justify-center">
+            <li><a href="#"><i class="fa-solid fa-house"></i> Inicio</a></li>
+            <li><a href="#projects" onclick="showSection('projects')"><i class="fa-solid fa-briefcase"></i> Proyectos</a></li>
+            <li><a href="#trajectory" onclick="showSection('trajectory')"><i class="fa-solid fa-road"></i> Trayectoria</a></li>
+            <li><a href="#services" onclick="showSection('services')"><i class="fa-solid fa-concierge-bell"></i> Servicios</a></li>
+            <li><a href="#login" onclick="showSection('login')"><i class="fa-solid fa-user-shield"></i> Admin</a></li>
+          </ul>
+        </div>
+        
+        
+      
+            <div class="profile-actions">
+              <a href="https://www.instagram.com/olmer.ruiz.75?igsh=MXN3eHpkY3Mwd3B2bQ==" target="_blank" class="edit-button">
+                Seguir <img src="img/logo-instagram.svg" alt="Lobo" class="wolf-icon">
+              </a>
+            </div>
+            <!-- Sección de búsqueda -->
+<div class="px-6 mt-3 mb-2">
+  <div class="w-full max-w-md mx-auto">
+    <div class="flex items-center bg-white border border-gray-200 rounded-full shadow-sm px-4 py-2 transition focus-within:ring-2 focus-within:ring-gray-400">
+      <!-- Icono de búsqueda -->
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1116.65 5.65a7.5 7.5 0 010 10.6z" />
+      </svg>
+
+      <!-- Campo de búsqueda -->
+      <input type="text" id="searchInput" placeholder="Buscar..." class="flex-1 bg-transparent outline-none text-gray-800 placeholder-gray-500 text-sm"/>
+
+      <!-- Icono de flecha -->
+      <svg onclick="searchText()" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400 ml-3 cursor-pointer hover:text-gray-600 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+     
+
+      
+     <!-- Secciones -->
+     <div id="projects" class="section active">
+       <div class="tweet-box">
+          <% proyectos.forEach(p => { %>
+            <div class="tweet">
+              <div class="user-header">
+                <img src="/img/avatar.jpg" alt="Avatar" class="avatar-mini">
+                <div class="user-info">
+                  <span class="username">Olmer Ruiz</span>
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" alt="Verificado" class="verificado-icon">
+                </div>
+              </div>
+          
+              <div class="tweet-content">
+                <h3 class="tweet-title"><%= p.titulo %></h3>
+                <p class="tweet-description"><%= p.descripcion %></p>
+          
+                <div class="tweet-media">
+                  <img src="/uploads/<%= p.imagen %>" alt="Proyecto">
+                </div>
+              </div>
+          
+              <div class="tweet-actions">
+               
+                <button class="action-button like" onclick="darLike('<%= p.id %>', this)" id="like-btn-<%= p.id %>">
+                  <i class="fa-regular fa-heart icon-outline"></i> <!-- Corazón vacío -->
+                  <span class="like-count"><%= p.likes %></span>
+                </button>
+                
+                
+                
+                
+              
+                
+                <% if (p.github) { %>
+                  <a href="<%= p.github %>" target="_blank" class="action-button">
+                    <i class="fa-brands fa-github"></i> Código
+                  </a>
+                <% } %>
+                <% if (p.deploy) { %>
+                  <a href="<%= p.deploy %>" target="_blank" class="action-button">
+                    <i class="fa-solid fa-globe"></i> Deploy
+                  </a>
+                <% } %>
+              
+                <button class="action-button" onclick="compartirEnlaceProyecto('<%= p.enlace %>')">
+                  <i class="fa-solid fa-share-nodes"></i> Compartir
+                </button>
+                
+              </div>
+            </div>
+          <% }) %>
+         </div>
+     </div>
+
+  
+
+
+
+
+          
+
+     <div id="admin" class="section px-6" style="display:none;">
+          <div class="form-container">
+            <h2>Publicar Proyecto</h2>
+            <form action="/upload-project" method="POST" enctype="multipart/form-data" class="upload-form">
+              <div class="input-group">
+                <input type="text" name="titulo" placeholder="Título del proyecto" required>
+              </div>
+              
+              <div class="input-group">
+                <textarea name="descripcion" placeholder="Descripción del proyecto" required></textarea>
+              </div>
+              
+              <div class="input-group">
+                <input type="text" name="github" placeholder="Enlace a GitHub">
+              </div>
+              
+              <div class="input-group">
+                <input type="text" name="deploy" placeholder="Enlace Deploy">
+              </div>
+              
+              
+              <div class="input-group">
+                <input type="file" name="imagen" accept="image/*" required>
+              </div>
+        
+              <div class="button-group">
+                <button type="submit" class="submit-button">Publicar Proyecto</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <section id="login" class="section">
+          <!-- Sección de Login limpia y elegante -->
+          <div  class="min-h-screen flex items-center justify-center bg-white px-4"  >
+            <div class="w-full max-w-sm bg-white rounded-xl border border-gray-200 shadow-lg p-8 space-y-6">
+              <h2 class="text-2xl font-bold text-center text-black">Iniciar Sesión</h2>
+              <form id="loginForm" class="space-y-4">
+                <div>
+                  <label for="username" class="block text-sm font-medium text-gray-700">Usuario</label>
+                  <input type="text" name="username" required placeholder="Ingresa tu usuario"
+                         class="w-full px-4 py-2 mt-1 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" />
+                </div>
+                <div>
+                  <label for="password" class="block text-sm font-medium text-gray-700">Contraseña</label>
+                  <input type="password" name="password" required placeholder="••••••••"
+                         class="w-full px-4 py-2 mt-1 text-black bg-white border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500" />
+                </div>
+                <div>
+                  <button type="submit"
+                  class="w-full py-2 px-4 text-white font-semibold bg-red-700 hover:bg-red-800 transition duration-300 rounded-md">
+                  Iniciar sesión
+                </button>
+                
+                  
+                  
+                </div>
+              </form>
+            </div>
+          </div>
+
+
+
+        </section>
+
+
+     
+        <section id="trajectory" class="section bg-white text-gray-800 px-4 sm:px-6 py-20">
+          <div class="max-w-4xl mx-auto">
+            <!-- Encabezado -->
+            <div class="mb-12 text-center">
+              <h2 class="text-4xl font-bold tracking-tight mb-4">Sobre mí</h2>
+              <p class="text-lg text-gray-600 leading-relaxed max-w-2xl mx-auto">
+                Descubre mi trayectoria profesional, mis valores y mi enfoque en la tecnología como herramienta para mejorar la vida de las personas.
+              </p>
+            </div>
+        
+            <!-- Bloque de descripción -->
+            <div class="bg-gray-50 p-6 sm:p-10 rounded-3xl shadow-xl space-y-6 text-center sm:text-left">
+              <p class="text-xl leading-relaxed text-gray-700">
+                Soy <strong class="text-gray-900">Olmer Ruiz</strong>, un profesional en soporte informático con pasión por la creación digital y el desarrollo web. Desde mis primeros pasos en el mundo técnico, entendí que resolver problemas reales con soluciones simples es una de mis mayores fortalezas.
+              </p>
+              <p class="text-xl leading-relaxed text-gray-700">
+                Mi enfoque es claro: funcionalidad, claridad visual y evolución constante. He ayudado a usuarios, empresas y equipos a optimizar sistemas, construir redes sólidas y mantener entornos tecnológicos saludables.
+              </p>
+              <p class="text-xl font-semibold text-gray-800 leading-relaxed">
+                Hoy, combino mi base técnica con mi creciente experiencia en desarrollo front-end para construir proyectos útiles, accesibles y visualmente armoniosos.
+              </p>
+            </div>
+        
+            <!-- Métricas -->
+            <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+              <div>
+                <p class="text-3xl font-bold text-gray-800">3+</p>
+                <p class="text-sm text-gray-600">Años de experiencia</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-gray-800">30+</p>
+                <p class="text-sm text-gray-600">Proyectos técnicos y web</p>
+              </div>
+              <div>
+                <p class="text-3xl font-bold text-gray-800">100%</p>
+                <p class="text-sm text-gray-600">Compromiso y garantia</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        
+        
+        <section id="services" class=" section bg-gradient-to-b from-white to-gray-100 text-gray-900 py-20 px-6">
+          <div class="max-w-7xl mx-auto space-y-20">
+        
+            <!-- Encabezado de sección -->
+            <header class="text-center">
+              <h2 class="text-4xl font-extrabold text-neutral-800 mb-4">Servicios Profesionales</h2>
+              <p class="max-w-3xl mx-auto text-gray-600 text-lg">Trabajamos de forma <strong class="text-neutral-700">remota 24/7</strong> para ofrecerte soluciones digitales a la medida. ¡Siempre disponibles para ti!</p>
+            </header>
+        
+            <!-- Servicios -->
+            <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+              <div class="bg-white p-6 rounded-3xl shadow-xl border-t-4 border-neutral-700">
+                <div class="text-neutral-800 mb-4 text-4xl"><i class="lucide lucide-laptop"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Soporte Técnico</h3>
+                <p class="text-sm text-gray-700">Reparación, diagnóstico, mantenimiento y optimización de sistemas y redes.</p>
+              </div>
+              <div class="bg-white p-6 rounded-3xl shadow-xl border-t-4 border-neutral-700">
+                <div class="text-neutral-800 mb-4 text-4xl"><i class="lucide lucide-globe"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Desarrollo Web Básico</h3>
+                <p class="text-sm text-gray-700">Páginas elegantes, funcionales y responsivas para portfolios o negocios.</p>
+              </div>
+              <div class="bg-white p-6 rounded-3xl shadow-xl border-t-4 border-neutral-700">
+                <div class="text-neutral-800 mb-4 text-4xl"><i class="lucide lucide-lightbulb"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Asesoría en Tecnología</h3>
+                <p class="text-sm text-gray-700">Te guiamos en hardware, software y herramientas para mejorar tu rendimiento.</p>
+              </div>
+              <div class="bg-white p-6 rounded-3xl shadow-xl border-t-4 border-neutral-700">
+                <div class="text-neutral-800 mb-4 text-4xl"><i class="lucide lucide-cpu"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Optimización y Limpieza</h3>
+                <p class="text-sm text-gray-700">Mejoramos el rendimiento de tus equipos con limpieza física y digital.</p>
+              </div>
+              <div class="bg-white p-6 rounded-3xl shadow-xl border-t-4 border-neutral-700">
+                <div class="text-neutral-800 mb-4 text-4xl"><i class="lucide lucide-wifi"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Redes e Infraestructura</h3>
+                <p class="text-sm text-gray-700">Instalación y configuración de redes estables y seguras.</p>
+              </div>
+              <div class="bg-white p-6 rounded-3xl shadow-xl border-t-4 border-neutral-700">
+                <div class="text-neutral-800 mb-4 text-4xl"><i class="lucide lucide-shield-check"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Mantenimiento Preventivo</h3>
+                <p class="text-sm text-gray-700">Extiende la vida útil de tus equipos con mantenimiento regular.</p>
+              </div>
+            </div>
+        
+            <!-- Beneficios -->
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+              <div>
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">¿Por qué elegirnos?</h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li>🌟 <strong>Diseño Personalizado:</strong> Soluciones adaptadas totalmente a ti.</li>
+                  <li>📞 <strong>Comunicación Clara:</strong> Canales abiertos, atención directa.</li>
+                  <li>🎯 <strong>Soporte Profesional:</strong> Técnicos especializados a tu disposición.</li>
+                  <li>🌐 <strong>Servicio Remoto 24/7:</strong> Estamos disponibles ¡todo el tiempo!</li>
+                </ul>
+              </div>
+              <div class="bg-neutral-100 p-8 rounded-3xl shadow-lg text-center">
+                <h4 class="text-xl font-bold text-neutral-800 mb-4">Conéctate con Nosotros</h4>
+                <p class="text-gray-700 mb-2">¿Tienes dudas o una propuesta? ¡Hablemos ya!</p>
+                <p class="text-gray-800 font-semibold">Horario: 24/7 - Siempre en línea</p>
+                <p class="text-gray-800 font-semibold">Email: <a href="olmeruiz_2003@outlook.com" class="text-neutral-700 underline">olmeruiz_2003@outlook.com</a></p>
+                <p class="mt-4 text-neutral-800 font-medium">Trabajemos juntos para llevar tus ideas al siguiente nivel.</p>
+              </div>
+            </div>
+        
+            <!-- Habilidades -->
+            <div class="bg-white p-10 rounded-3xl shadow-xl">
+              <h3 class="text-2xl font-bold mb-6 text-center text-gray-800">Nuestras Habilidades</h3>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 text-sm text-gray-700">
+                <div>
+                  <h4 class="font-semibold text-neutral-800 mb-1">🎨 Diseño UX</h4>
+                  <p>Experiencias centradas en el usuario: intuitivas, funcionales y encantadoras.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-neutral-800 mb-1">🖌️ Diseño UI</h4>
+                  <p>Interfaz moderna, visualmente atractiva y responsiva.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-neutral-800 mb-1">♿ Accesibilidad</h4>
+                  <p>Diseños inclusivos para todos los públicos.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-neutral-800 mb-1">📱 Adaptabilidad</h4>
+                  <p>Experiencia fluida en todos los dispositivos y tamaños de pantalla.</p>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Preguntas Frecuentes -->
+            <div>
+              <h3 class="text-2xl font-bold mb-4 text-gray-800">Preguntas Frecuentes</h3>
+              <div class="space-y-6 text-gray-700">
+                <div>
+                  <h4 class="font-semibold text-neutral-800">01. ¿Cómo puedo contactar con el Personal?</h4>
+                  <p>Envíanos un mensaje por nuestras redes sociales o escríbenos a nuestro correo.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-neutral-800">02. ¿Cuánto tiempo tarda en responder el equipo?</h4>
+                  <p>Nos esforzamos por responder rápidamente. Normalmente, lo hacemos en menos de 24 horas.</p>
+                </div>
+                <div>
+                  <h4 class="font-semibold text-neutral-800">03. ¿Qué información debo incluir en mi mensaje?</h4>
+                  <p>Tu nombre, contacto, detalles de tu proyecto o consulta. Cuanta más información, mejor.</p>
+                </div>
+              </div>
+            </div>
+        
+          </div>
+        </section>
+        
+        
+        
+    
+        <footer class="main-footer">
+          <div class="footer-icons">
+            <a href="https://facebook.com" target="_blank"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:tuemail@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://linkedin.com" target="_blank"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+
+        
+          
+            <p class="footer-text">© 2025 "Conectando ideas, creando futuro."</p>
+      </footer>
+          
+      <div id="notification" class="notification hidden"></div>
+
+
+          
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.5/dist/js/splide.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Bootstrap JS y dependencias (para que el carrusel funcione) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      var typed = new Typed(".typings", {
+        strings: ["con código.", "con soluciones.", "con experiencias."],
+        typeSpeed: 60,
+        backSpeed: 40,
+        loop: true
+      });
+    </script>
+    
+    <!-- CDN de Typed.js -->
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+
+
+
+      <!-- Lucide Icons (al final del body) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    lucide.createIcons();
+    
+  function showSection(id) {
+    const allSections = document.querySelectorAll('.section');
+    allSections.forEach(sec => sec.classList.remove('active'));
+
+    if (id === 'inicio') {
+      allSections.forEach(sec => sec.classList.remove('active')); // Oculta todo
+    } else {
+      document.getElementById(id).classList.add('active'); // Muestra la elegida
+    }
+  }
+</script>
+    
+
+<button id="scrollTopBtn" class="hidden fixed bottom-6 right-6 z-50 bg-neutral-900/80 hover:bg-neutral-900/90 text-white p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out animate-fade-in">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+
+    <script>
+      const scrollTopBtn = document.getElementById("scrollTopBtn");
+    
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) {
+          scrollTopBtn.classList.remove("hidden");
+        } else {
+          scrollTopBtn.classList.add("hidden");
+        }
+      });
+    
+      scrollTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      });
+    </script>
+
+<script>
+
+function showNotification(message) {
+    const notif = document.getElementById('notification');
+    notif.textContent = message;
+    notif.classList.remove('hidden');
+    notif.classList.add('show');
+
+    // Oculta después de 3 segundos
+    setTimeout(() => {
+        notif.classList.remove('show');
+        notif.classList.add('hidden');
+    }, 3000);
+}
+
+</script>
+
+
+
+
+  <script>
+function darLike(id, btn) {
+    // Verifica si el dispositivo ya ha dado like usando una cookie
+    if (getCookie('liked_project_' + id)) {
+    showNotification('Ya has dado like a este proyecto.');
+    return;
+}
+    // Si no se ha dado like, procede a actualizar el contador de likes
+    fetch(`/like/${id}`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Incrementa el contador de likes en la interfaz
+            const likeCount = btn.querySelector('.like-count');
+            likeCount.textContent = data.likes;
+
+            // Establecer una cookie para recordar que este dispositivo ya dio like
+            setCookie('liked_project_' + id, 'true', 30); // Expira en 30 días
+        } else {
+            alert('Hubo un problema al dar like.');
+        }
+    })
+    .catch(error => {
+        console.error('Error al dar like:', error);
+        alert('Hubo un error al dar like.');
+    });
+}
+
+function setCookie(name, value, days) {
+    const d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
+ </script>
+
+<script>
+
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Evitar el comportamiento por defecto del formulario
+
+  // Obtener los valores del formulario
+  const username = event.target.username.value;
+  const password = event.target.password.value;
+
+  // Verificación simple de credenciales
+  if (username === "admin" && password === "2025") {
+    // Si las credenciales son correctas, ocultamos el login y mostramos el panel de admin
+    document.getElementById("login").style.display = "none";
+    document.getElementById("admin").style.display = "block";
+  } else {
+    // Si las credenciales no son correctas, mostramos un mensaje de error
+    alert("Usuario o contraseña incorrectos.");
+  }
+});
+
+</script>
+
+
+
+
+    
+    
+<script src="js/script.js"></script>
+
+</body>
+</html>

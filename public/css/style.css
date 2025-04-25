@@ -1,0 +1,608 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f8fa;
+}
+
+/* Contenedor principal del perfil */
+.profile-container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative; /* Necesario para que el avatar se posicione relativo a este contenedor */
+}
+
+/* Carrusel de la foto de portada */
+.carousel-item img {
+  width: 100%;   /* El ancho será 100% del contenedor */
+  height: 150px; /* El alto será fijo en 150px */
+  object-fit: cover; /* Para asegurar que la imagen cubra todo el área sin distorsionarse */
+}
+
+
+/* Avatar (foto de perfil) encima del carrusel */
+.avatar {
+    width: 100px;
+    height: 100px;
+    border: 4px solid white; /* Borde blanco como en Twitter */
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    left: 20px;     /* Distancia desde el borde izquierdo */
+    top: 100px;     /* Ajusta este valor para que esté justo sobre la portada */
+    z-index: 10;    /* Asegura que esté por encima */
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Información del usuario */
+.profile-info {
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #e1e8ed;
+    margin-top: 40px;
+}
+
+/* Asegura que las imágenes del carrusel llenen bien el espacio sin deformarse */
+.splide__slide img {
+    width: 100%;
+    height: 150px; /* Igual al alto del contenedor cover-photo */
+    object-fit: cover; /* Rellena sin deformar y recorta si es necesario */
+    display: block;
+}
+
+
+/* Detalles del usuario (nombre, usuario y bio) */
+.user-details h1 {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+.user-details p {
+    color: #657786;
+    
+}
+
+.user-bio {
+  text-align: justify;
+  margin-top: 10px; /* Espaciado opcional para separar del primer párrafo */
+  font-size: 15px;
+}
+
+
+/* Estilo para los botones de acción */
+.profile-actions {
+    position: absolute; /* Esto permite mover el bloque */
+    top: 155px;          /* Distancia desde arriba */
+    right: 20px;        /* Distancia desde la derecha */
+    display: flex;
+    gap: 10px;          /* Espacio entre los botones */
+}
+.verificado-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+ 
+
+
+
+.profile-actions button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    background-color: #1da1f2;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.profile-actions button:hover {
+    background-color: #0d8cce;
+}
+
+/* Estilos para los tweets */
+.tweets-section {
+    padding: 20px;
+}
+
+.tweet {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.tweet-content {
+    font-size: 1em;
+    color: #14171a;
+}
+
+
+/* Contenedor principal para la navegación */
+.nav-container {
+  overflow-x: auto; /* Permite deslizar horizontalmente */
+  white-space: nowrap; /* Evita que los elementos salten de línea */
+  background-color: #ffffff; /* Fondo claro */
+  padding: 10px 0;
+  border-radius: 8px; /* Bordes suaves */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  scrollbar-width: none; /* Oculta la barra de scroll en navegadores compatibles */
+  -ms-overflow-style: none; /* Oculta la barra en Internet Explorer */
+
+  /* Aquí va lo sticky */
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+
+/* Lista de navegación horizontal */
+.nav-scrollable {
+  list-style: none;
+  display: flex;
+  gap: 8px; /* Espaciado entre los elementos */
+  padding: 0 15px; /* Espaciado interno */
+  margin: 0;
+}
+
+/* Estilo para cada elemento */
+.nav-scrollable li {
+  display: inline-block; /* Alineación horizontal */
+}
+
+/* Enlaces de navegación */
+.nav-scrollable li a {
+  text-decoration: none; /* Sin subrayado */
+  color: #000000; /* Azul para los enlaces */
+  font-size: 0.95rem; /* Tamaño del texto */
+  font-weight: bold; /* Negrita */
+  display: flex;
+  flex-direction: column; /* Ícono encima del texto */
+  align-items: center; /* Centrado */
+  gap: 5px; /* Espaciado entre el ícono y el texto */
+  padding: 8px 15px;
+  border-radius: 6px; /* Bordes suaves */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Animaciones */
+}
+
+/* Efectos al pasar el cursor */
+.nav-scrollable li a:hover {
+  background-color: #b71b1b; /* Fondo azul al interactuar */
+  color: white; /* Cambia el texto y el ícono a blanco */
+}
+
+/* Ocultar la sección de Admin inicialmente */
+.hidden-admin {
+  display: none; /* Oculta el elemento de Admin */
+}
+
+/* Muestra la sección de Admin al activarse */
+.show-admin {
+  display: inline-block;
+}
+
+
+
+
+
+  .tweet-box {
+    background-color: #ffffff;
+    border: 1px solid #e1e8ed;
+    border-radius: 10px;
+    padding:10px;
+    margin-bottom: 20px;
+    max-width: 100%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  }
+  
+  .user-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .avatar-mini {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+  }
+  
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .username {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .verificado-icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .tweet-title {
+    margin: 10px 0 5px;
+    font-size: 1.2rem;
+  }
+  
+  .tweet-description {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  
+  .tweet-media img,
+  .tweet-media video {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  
+  .tweet-actions {
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid #e1e8ed;
+    flex-wrap: wrap;
+  }
+  
+
+  .edit-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #E1306C;
+    color: rgb(0, 0, 0);
+    padding: 5px 10px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    gap: 5px;
+    overflow: hidden; /* opcional para prevenir desbordes */
+  }
+  
+  .edit-button:hover {
+    background-color: #c72c61;
+  }
+  
+  .wolf-icon {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+  }
+  
+  /* Solo agranda la imagen al pasar el mouse por el botón */
+  .edit-button:hover .wolf-icon {
+    transform: scale(1.5);
+  }
+  
+  
+
+
+
+
+
+  .main-footer {
+    background-color: #1a1a1a;
+    color: #ccc;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 40px;
+    border-top: 2px solid #333;
+  }
+  
+  .footer-icons {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 10px;
+  }
+  
+  .footer-icons a {
+    color: #ccc;
+    font-size: 20px;
+    transition: color 0.3s;
+  }
+  
+  .footer-icons a:hover {
+    color: #1da1f2;
+  }
+  
+  .footer-text {
+    font-size: 14px;
+    color: #999;
+  }
+  
+
+
+
+   /* Contenedor principal */
+   .acerca-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+
+  /* Encabezado */
+  .acerca-header h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .acerca-header h3 {
+    font-size: 1.5rem;
+    color: #1DA1F2; /* Color de Twitter */
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+
+  /* Contenido */
+  .acerca-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 15px;
+    
+  }
+
+  /* Pie de página */
+  .acerca-footer p {
+    font-size: 1rem;
+    color: #888;
+    font-style: italic;
+    text-align: center;
+    margin-top: 30px;
+  }
+  /* Estilo responsive */
+  @media screen and (max-width: 768px) {
+    .acerca-container {
+      padding: 15px;
+    }
+    .acerca-header h2 {
+      font-size: 1.8rem;
+    }
+    .acerca-header h3 {
+      font-size: 1.3rem;
+    }
+  }
+
+
+
+
+
+
+
+
+/* Estilos generales */
+
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.input-group textarea {
+  height: 100px;
+  resize: none;
+}
+
+.input-group input[type="file"] {
+  padding: 5px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #1DA1F2;
+  outline: none;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  background-color: #1DA1F2;
+  color: white;
+  font-size: 1.1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+  background-color: #0d95e8;
+}
+
+.submit-button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .section {
+    padding: 15px;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+
+
+.typings {
+  font-size: 17px;
+  text-align: center;
+  margin: 0px;
+  color: #dc350b;
+}
+
+
+.action-button{
+
+  color: #14171a;
+  border: none; /* Sin bordes */
+    background-color: transparent; /* Fondo transparente */
+
+
+}
+a{
+  text-decoration: none; /* Elimina el subrayado */
+  color: #14171a;
+
+}
+
+
+.profile-info .twitter-info {
+  display: flex;
+  justify-content: flex-start; /* Alinea los íconos/texto a la izquierda */
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 10px;  /* Ajusta el espacio en la parte superior */
+  padding-bottom: -12px; /* Ajusta el espacio en la parte inferior */
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: #657786;
+  margin-left: 0; /* Elimina el centrado */
+}
+
+
+
+
+.twitter-info p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+}
+
+
+
+.search-section {
+    padding: 20px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 8px 12px;
+    background-color: #fff;
+}
+
+.search-icon, .chevron-icon {
+    font-size: 20px;
+    color: #666;
+}
+
+.search-input {
+    flex-grow: 1;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    color: #333;
+    padding: 5px;
+    background-color: transparent;
+}
+
+.search-input::placeholder {
+    color: #999;
+}
+
+/* Estilo para el ícono de chevron al final */
+.chevron-icon {
+    cursor: pointer;
+}
+
+
+
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+}
+
+.notification.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+  pointer-events: auto;
+}
+
+.notification.hidden {
+  display: none;
+}
+
+
+
+/* Ocultar la barra de desplazamiento horizontal */
+.nav-scrollable::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.nav-scrollable {
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+  scrollbar-width: none;     /* Firefox */
+}

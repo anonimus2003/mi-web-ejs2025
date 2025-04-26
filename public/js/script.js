@@ -1,144 +1,128 @@
-// Inicializar el carrusel con Splide.js
-var splide = new Splide('.splide', {
-    type    : 'fade',      // Efecto de desvanecimiento entre imágenes
-    heightRatio: 0.5,      // Controla la altura del carrusel
-    autoplay: true,        // Hace que el carrusel avance automáticamente
-    arrows : false,        // Desactiva las flechas de navegación
-    pagination : true,     // Activa los puntos de paginación
-    interval: 5000,        // Intervalo de tiempo entre cambios de imagen (5 segundos)
+// Iniciar Typed.js
+var typed = new Typed(".typings", {
+  strings: ["con código."],
+  typeSpeed: 60,
+  backSpeed: 40,
+  loop: true
 });
 
-splide.mount();  // Inicia el carrusel
+// Función para mostrar y ocultar secciones
+function showSection(id) {
+  const allSections = document.querySelectorAll('.section');
+  allSections.forEach(sec => sec.classList.remove('active'));
 
-
-
-
-
-  function compartirEnlace() {
-    const url = window.location.href;
-    navigator.clipboard.writeText(url)
-      .then(() => alert("¡Enlace copiado al portapapeles!"))
-      .catch(() => alert("Error al copiar el enlace."));
-  }
-
-
-
-
-  function darLike(boton) {
-    const icon = boton.querySelector("i");
-    const contador = boton.querySelector(".like-count");
-  
-    let likes = parseInt(contador.textContent);
-  
-    // Verifica si ya está activo el like
-    const yaLeGusto = boton.classList.contains("liked");
-  
-    if (yaLeGusto) {
-      likes--;
-      icon.classList.remove("fa-solid");
-      icon.classList.add("fa-regular");
-      boton.classList.remove("liked");
-    } else {
-      likes++;
-      icon.classList.remove("fa-regular");
-      icon.classList.add("fa-solid");
-      boton.classList.add("liked");
-    }
-  
-    contador.textContent = likes;
-  }
-  
-
-
-
-
-  function compartirEnlaceProyecto(urlProyecto) {
-    if (navigator.share) {
-      navigator.share({
-        title: 'Mira este proyecto',
-        text: 'Te comparto este proyecto genial:',
-        url: urlProyecto
-      })
-      .then(() => console.log('¡Compartido con éxito!'))
-      .catch((error) => console.error('Error al compartir:', error));
-    } else {
-      alert('Tu navegador no soporta el menú de compartir automático. Copiamos el enlace por ti.');
-      navigator.clipboard.writeText(urlProyecto)
-        .then(() => alert('¡Enlace copiado al portapapeles!'))
-        .catch(err => alert('Error al copiar el enlace.'));
-    }
-  }
-  
-
-
-
-
-
-
-
-
-
-
-    //  Animación de escritura (Typing)
-    // ---------------------------
-    new Typed(".typings", {
-      strings: ["con código!"],
-      typeSpeed: 100,
-      backSpeed: 60,
-      loop: true
-  });
-
-
-
-
-// Obtener el input de búsqueda y las secciones de la página
-const searchInput = document.querySelector('.search-input');
-const sections = document.querySelectorAll('.section'); // Asegúrate de que las secciones que deseas buscar tengan la clase 'section'
-
-// Agregar un evento de búsqueda
-searchInput.addEventListener('input', function() {
-    const searchTerm = searchInput.value.toLowerCase(); // Obtener el término de búsqueda en minúsculas
-
-    // Recorrer todas las secciones de la página
-    let found = false; // Variable para saber si se ha encontrado alguna coincidencia
-    sections.forEach(section => {
-        const sectionTitle = section.querySelector('h2') ? section.querySelector('h2').textContent.toLowerCase() : ''; // Obtener el título de cada sección (suponiendo que tiene un h2)
-        const sectionText = section.textContent.toLowerCase(); // Todo el texto de la sección
-
-        if (sectionTitle.includes(searchTerm) || sectionText.includes(searchTerm)) {
-            // Si el término de búsqueda está en el título o en el contenido de la sección, mostrarla
-            section.style.display = 'block'; // Mostrar la sección
-            if (!found) {
-                section.scrollIntoView({ behavior: 'smooth' }); // Hacer scroll hacia el primer elemento encontrado
-                found = true;
-            }
-        } else {
-            // Si no coincide, ocultar la sección
-            section.style.display = 'none';
-        }
-    });
-});
-
-
-
-
-  // Simulación de un login básico
-// Manejador de eventos para el formulario de login
-document.getElementById("loginForm").addEventListener("submit", function(event) {
-  event.preventDefault(); // Evitar el comportamiento por defecto del formulario
-
-  // Obtener los valores del formulario
-  const username = event.target.username.value;
-  const password = event.target.password.value;
-
-  // Verificación simple de credenciales
-  if (username === "admin" && password === "2025") {
-    // Si las credenciales son correctas, ocultamos el login y mostramos el panel de admin
-    document.getElementById("login").style.display = "none";
-    document.getElementById("admin").style.display = "block";
+  if (id === 'inicio') {
+    allSections.forEach(sec => sec.classList.remove('active')); // Oculta todo
   } else {
-    // Si las credenciales no son correctas, mostramos un mensaje de error
-    alert("Usuario o contraseña incorrectos.");
+    document.getElementById(id).classList.add('active'); // Muestra la elegida
+  }
+}
+
+// Mostrar y ocultar botón de scroll al principio de la página
+const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 300) {
+    scrollTopBtn.classList.remove("hidden");
+  } else {
+    scrollTopBtn.classList.add("hidden");
   }
 });
+
+scrollTopBtn.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+});
+
+// Función para mostrar notificaciones
+function showNotification(message) {
+  const notif = document.getElementById('notification');
+  notif.textContent = message;
+  notif.classList.remove('hidden');
+  notif.classList.add('show');
+
+  // Oculta después de 3 segundos
+  setTimeout(() => {
+    notif.classList.remove('show');
+    notif.classList.add('hidden');
+  }, 3000);
+}
+
+// Función para dar like a un proyecto
+function darLike(id, btn) {
+  // Verifica si el dispositivo ya ha dado like usando una cookie
+  if (getCookie('liked_project_' + id)) {
+    showNotification('Ya has dado like a este proyecto.');
+    return;
+  }
+  // Si no se ha dado like, procede a actualizar el contador de likes
+  fetch(`/like/${id}`, {
+    method: 'POST'
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      // Incrementa el contador de likes en la interfaz
+      const likeCount = btn.querySelector('.like-count');
+      likeCount.textContent = data.likes;
+
+      // Establecer una cookie para recordar que este dispositivo ya dio like
+      setCookie('liked_project_' + id, 'true', 30); // Expira en 30 días
+    } else {
+      alert('Hubo un problema al dar like.');
+    }
+  })
+  .catch(error => {
+    console.error('Error al dar like:', error);
+    alert('Hubo un error al dar like.');
+  });
+}
+
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+// Esperar que todo el HTML esté cargado
+document.addEventListener("DOMContentLoaded", function () {
+
+  // Obtener el formulario de login
+  const loginForm = document.getElementById("loginForm");
+
+  // Agregar el event listener al formulario para el submit
+  loginForm.addEventListener("submit", function(event) {
+    event.preventDefault(); // Prevenir comportamiento por defecto del formulario
+
+    // Obtener las credenciales ingresadas por el usuario
+    const username = event.target.username.value;
+    const password = event.target.password.value;
+
+    // Verificar si las credenciales son correctas
+    if (username === "admin" && password === "2025") {
+      // Si el login es correcto, ocultar la sección de login
+      document.getElementById("login").style.display = "none";
+      // Mostrar la sección de admin
+      document.getElementById("admin").style.display = "block";
+    } else {
+      alert("Usuario o contraseña incorrectos.");
+    }
+  });
+});
+
+
 

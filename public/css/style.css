@@ -10,8 +10,12 @@ body {
     background-color: #f5f8fa;
 }
 
+
+
 /* Contenedor principal del perfil */
 .profile-container {
+  background-color: var(--background-color);
+  color: var(--text-color);
     width: 100%;
     max-width: 900px;
     margin: auto;
@@ -606,3 +610,4 @@ a{
   -ms-overflow-style: none;  /* Internet Explorer 10+ */
   scrollbar-width: none;     /* Firefox */
 }
+

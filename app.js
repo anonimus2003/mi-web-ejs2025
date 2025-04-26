@@ -19,11 +19,13 @@ const upload = multer({ storage });
 
 // Base de datos
 const db = mysql.createConnection({
-  host: 'localhost',
+  host: 'shinkansen.proxy.rlwy.net',
   user: 'root',
-  password: 'oLMER2003*',
-  database: 'proyectos_db',
+  password: 'ZEWmSRqytakyXhjjyOYEmWjyKlWRdoRT',
+  database: 'railway',
+  port: 18139, // Asegúrate de que el puerto está especificado aquí si es necesario
 });
+
 
 // Ruta para subir proyectos
 app.post('/upload-project', upload.single('imagen'), (req, res) => {
@@ -62,4 +64,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.listen(3000, () => console.log('Servidor activo en http://localhost:3000'));
+const port = process.env.PORT || 18139; // Usa el puerto de Railway o 18139 por defecto
+app.listen(port, () => console.log(`Servidor activo en http://localhost:${port}`));
+
